@@ -1,17 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Card.css';
 
 const PromotionCard = ({ promotion }) => (
     <div className="promotion-card">
-        <img src={promotion.imageUrl} 
+        <img 
+        src={promotion.imageUrl} 
         alt={promotion.title} 
-        className="promotion-card__image"/>
+        className="promotion-card__image"
+        />
         <div>
             <h1 className="promotion-card__title">{promotion.title}</h1>
             <span className="promotion-card__price" >R$ {promotion.price}</span>
             <footer className="promotion-card__footer">
                 {promotion.comments.length > 0 && (
-                    <div className="promotion-card__comment">"{promotion.comments[0].comment}"</div>
+                    <div className="promotion-card__comment">
+                        "{promotion.comments[0].comment}"
+                    </div>
                 )}
 
                 <div className="promotion-card__comments-count">
@@ -27,10 +32,9 @@ const PromotionCard = ({ promotion }) => (
                 >
                     IR PARA O SITE
                 </a>
+                <Link to={`/edit/${promotion.id}`}>Editar</Link>
             </footer>
         </div>
-
-
     </div>
 )
 export default PromotionCard;
